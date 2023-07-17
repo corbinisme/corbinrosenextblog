@@ -20,12 +20,12 @@ export default function CoverImage({ title, coverImage, slug }: Props) {
       alt={`Cover Image for ${title}`}
       src={coverImage?.node.sourceUrl}
       className={cn('shadow-small', {
-        'hover:shadow-medium transition-shadow duration-200': slug,
+        'hover:shadow-medium transition-shadow duration-200 rounded-t-lg': slug,
       })}
     />
   )
   return (
-    <div className="sm:mx-0">
+    <div className="sm:mx-0 imageWrapper">
       {slug ? (
         <Link href={`/posts/${slug}`} aria-label={title}>
           {image}

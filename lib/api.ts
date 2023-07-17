@@ -59,11 +59,37 @@ export async function getAllPostsWithSlug() {
   return data?.posts
 }
 
+export async function getPageByURI(pageURI){
+  const data = await fetchAPI(
+    `
+    query NewQuery($id: ID = "") {
+      page(id: $id, idType: URI) {
+        content(format: RENDERED)
+        title(format: RENDERED)
+        slug
+        featuredImage {
+          node {
+            sourceUrl
+          }
+        }
+      }
+    }
+    `,
+    {
+      variables: {
+        "id": pageURI
+      }
+    }
+  )
+    return data?.page
+
+}
+
 export async function getAllPostsForHome(preview) {
   const data = await fetchAPI(
     `
     query AllPosts {
-      posts(first: 20, where: { orderby: { field: DATE, order: DESC } }) {
+      posts(first: 20, where: { orderby: { field: DATE, order: DESC } ,categoryNotIn: "365"}) {
         edges {
           node {
             title

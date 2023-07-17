@@ -24,8 +24,9 @@ export default function Post({ post, posts, preview }) {
 
   return (
     <Layout preview={preview}>
+      <Header />
       <Container>
-        <Header />
+        
         {router.isFallback ? (
           <PostTitle>Loading…</PostTitle>
         ) : (
@@ -33,7 +34,7 @@ export default function Post({ post, posts, preview }) {
             <article>
               <Head>
                 <title>
-                  {`${post.title} | Next.js Blog Example with ${CMS_NAME}`}
+                  {`${post.title} | Corbinrose.com`}
                 </title>
                 <meta
                   property="og:image"
