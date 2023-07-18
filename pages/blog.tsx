@@ -6,15 +6,14 @@ import HeroPost from '../components/hero-post'
 import Intro from '../components/intro'
 import Layout from '../components/layout'
 import { getAllPostsForHome } from '../lib/api'
-import Header from '../components/header'
 
 
-export default function Index({ allPosts: { edges }, preview }) {
+export default function Blog({ allPosts: { edges }, preview }) {
   const heroPost = edges[0]?.node
   const morePosts = edges.slice(1)
 
   return (
-    <Layout title="Corbinrose.com"  content={{
+    <Layout title="Corbinrose.com Blog"  content={{
       featuredImage: {
         node: {
           sourceUrl: "none"

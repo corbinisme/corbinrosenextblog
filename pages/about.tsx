@@ -1,13 +1,13 @@
 import Head from 'next/head'
 import { GetStaticProps } from 'next'
-import Container from '../../components/container'
-import Layout from '../../components/layout'
-import { getAllPostsForHome } from '../../lib/api'
-import Header from '../../components/header'
-import { getPageByURI } from '../../lib/api'
-import PostBody from '../../components/post-body'
+import Container from '../components/container'
+import Layout from '../components/layout'
+import Header from '../components/header'
+import { getPageByURI } from '../lib/api'
+import PostBody from '../components/post-body'
 
-export default function Index({thisPage}){
+
+export default function About({thisPage}){
 
 
     return(
@@ -18,6 +18,7 @@ export default function Index({thisPage}){
         
        
             <div className="content">
+
                 
                 <PostBody content={thisPage.content} />
             </div>
@@ -28,7 +29,8 @@ export default function Index({thisPage}){
 
 
 export const getStaticProps: GetStaticProps = async () => {
-    const thisPage = await getPageByURI("/web")
+    const thisPage = await getPageByURI("/about")
+
   
     return {
       props: { thisPage },
